@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author meatloaf
+ *
+ */
+module Chess {
+}
