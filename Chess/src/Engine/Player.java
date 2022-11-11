@@ -15,22 +15,22 @@ public abstract class Player {
 		this.color = icolor;
 
 		// Creates a set of new peices for the player in a specific order
-		this.pieces.add(new Rook(icolor, null));
-		this.pieces.add(new Bishop(icolor, null));
-		this.pieces.add(new Knight(icolor, null));
-		this.pieces.add(new Queen(icolor, null));
-		this.pieces.add(new King(icolor, null));
-		this.pieces.add(new Knight(icolor, null));
-		this.pieces.add(new Bishop(icolor, null));
-		this.pieces.add(new Rook(icolor, null));
-		this.pieces.add(new Pawn(icolor, null));
-		this.pieces.add(new Pawn(icolor, null));
-		this.pieces.add(new Pawn(icolor, null));
-		this.pieces.add(new Pawn(icolor, null));
-		this.pieces.add(new Pawn(icolor, null));
-		this.pieces.add(new Pawn(icolor, null));
-		this.pieces.add(new Pawn(icolor, null));
-		this.pieces.add(new Pawn(icolor, null));
+		this.pieces.add(new Rook(icolor, null, this));
+		this.pieces.add(new Knight(icolor, null, this));
+		this.pieces.add(new Bishop(icolor, null, this));
+		this.pieces.add(new Queen(icolor, null, this));
+		this.pieces.add(new King(icolor, null, this));
+		this.pieces.add(new Bishop(icolor, null, this));
+		this.pieces.add(new Knight(icolor, null, this));
+		this.pieces.add(new Rook(icolor, null, this));
+		this.pieces.add(new Pawn(icolor, null, this));
+		this.pieces.add(new Pawn(icolor, null, this));
+		this.pieces.add(new Pawn(icolor, null, this));
+		this.pieces.add(new Pawn(icolor, null, this));
+		this.pieces.add(new Pawn(icolor, null, this));
+		this.pieces.add(new Pawn(icolor, null, this));
+		this.pieces.add(new Pawn(icolor, null, this));
+		this.pieces.add(new Pawn(icolor, null, this));
 	}
 	
 	// Populates locations for pieces on the board
@@ -40,12 +40,12 @@ public abstract class Player {
 		
 		// Selects both the rows and the order in which they will be used
 		if(this.color == Color.WHITE) {
-			row1 = 0;
-			row2 = 1;
-		}
-		if(this.color == Color.BLACK) {
 			row1 = 7;
 			row2 = 6;
+		}
+		if(this.color == Color.BLACK) {
+			row1 = 0;
+			row2 = 1;
 		}
 		
 		// Deals with placing pieces on row 1

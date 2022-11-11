@@ -24,7 +24,7 @@ public class Square {
 		
 		// Calculate correct row and column labels
 		ret += "ABCDEFGH".substring(c, c + 1);
-		ret += "12345678".substring(r, r + 1);			
+		ret += "87654321".substring(r, r + 1);			
 		return ret;
 	}
 	

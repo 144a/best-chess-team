@@ -2,19 +2,19 @@ package Engine;
 
 public class Queen extends Piece {
 	// Super constructor
-	public Queen(Color icolor, Square ilocation) {
-		super(icolor, ilocation, PieceType.QUEEN);
-	}
-	@Override
-	public boolean move(Square loc) {
-		// TODO Auto-generated method stub
-		return false;
+	public Queen(Color icolor, Square ilocation, Player iplayer) {
+		super(icolor, ilocation, PieceType.QUEEN, iplayer);
 	}
 
 	@Override
-	public boolean validate(Square loc) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean validate(Square loc) {	
+		// Check to make sure the path there is clear of pieces
+		if (this.pathClear(this.getLocation(), loc) == false) {
+			System.out.println("Path check failed");
+			return false;
+		}
+		
+		return true;
 	}
 	
 	public String toString() {

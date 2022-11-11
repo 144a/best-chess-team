@@ -48,7 +48,7 @@ public class Board {
 	
 	public Square getSquare(String str) {
 		int ic = "ABCDEFGH".indexOf(str.substring(0,1));
-		int ir = "12345678".indexOf(str.substring(1,2));
+		int ir = 7 - "12345678".indexOf(str.substring(1,2));
 		
 		return this.squares[ir][ic];
 	}
@@ -61,7 +61,7 @@ public class Board {
 		for(Square[] square_list: squares) {
 			counter++;
 			System.out.print("|");
-			System.out.print(counter);
+			System.out.print(9 - counter);
 			System.out.print("-|");			
 			for(Square square: square_list) {
 				if(square.getPiece() != null) {
@@ -70,7 +70,7 @@ public class Board {
 					System.out.print("  |");
 				}
 			}
-			System.out.print(counter);
+			System.out.print(9 - counter);
 			System.out.print("-|");
 			System.out.print("\n+--+--+--+--+--+--+--+--+--+--+\n");
 			

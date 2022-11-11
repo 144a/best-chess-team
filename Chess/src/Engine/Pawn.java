@@ -14,8 +14,8 @@ public class Pawn extends Piece {
 	private boolean isFirstMove;
 	
 	// Super constructor
-	public Pawn(Color icolor, Square ilocation) {
-		super(icolor, ilocation, PieceType.PAWN);
+	public Pawn(Color icolor, Square ilocation, Player iplayer) {
+		super(icolor, ilocation, PieceType.PAWN, iplayer);
 		isFirstMove = true;
 	}
 	
@@ -28,27 +28,31 @@ public class Pawn extends Piece {
 		int rowdif = cur[0] - target[0];
 		int coldif = cur[1] - target[1];
 		
+
+		
 		// Check to see if it moved vertically at all
 		if(rowdif == 0) {
 			return false;
 		}
 		
 		// Check to see if it is moving in the right direction
-		if((rowdif < 0 && this.color == Color.BLACK) || (rowdif > 0 && this.color == Color.WHITE)) {
+		if((rowdif < 0 && this.color == Color.WHITE) || (rowdif > 0 && this.color == Color.BLACK)) {
 			return false;
 		}
 		
 		// Check to see if the row difference is incrementing/decrementing by 1
-		if((rowdif != 1 && this.color == Color.BLACK) || (rowdif != -1 && this.color == Color.WHITE)) {
+		if((rowdif != 1 && this.color == Color.WHITE) || (rowdif != -1 && this.color == Color.BLACK)) {
 			// Check to see if its the first move
 			if(isFirstMove) {
-				if((rowdif != 2 && this.color == Color.BLACK) || (rowdif != -2 && this.color == Color.WHITE)) {
+				if((rowdif != 2 && this.color == Color.WHITE) || (rowdif != -2 && this.color == Color.BLACK)) {
 					return false;
 				}
 			} else {
 				return false;
 			}
 		}
+		
+
 		
 		// Check to see if horizontal difference is 1 and if there exists a piece there
 		if(Math.abs(coldif) <= 1) {
@@ -68,9 +72,9 @@ public class Pawn extends Piece {
 	
 	public String toString() {
 		if(this.color == Color.WHITE) {
-			return "wp";
+			return "wP";
 		} else { 
-			return "bp";
+			return "bP";
 		}
 	}
 }
