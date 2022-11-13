@@ -4,6 +4,7 @@ public class Queen extends Piece {
 	// Super constructor
 	public Queen(Color icolor, Square ilocation, Player iplayer) {
 		super(icolor, ilocation, PieceType.QUEEN, iplayer);
+		this.value = 9;
 	}
 
 	@Override

@@ -30,6 +30,9 @@ public class Board {
 	}
 	
 	// Methods
+	public int getEval() {
+		return this.player1.getValue() - this.player1.getValue();
+	}
 	public boolean checkIfCheck(Color c) {
 		boolean ret = false;
 		

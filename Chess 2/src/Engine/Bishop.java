@@ -6,6 +6,7 @@ public class Bishop extends Piece {
 	// Super constructor
 	public Bishop(Color icolor, Square ilocation, Player iplayer) {
 		super(icolor, ilocation, PieceType.BISHOP, iplayer);
+		this.value = 3;
 	}
 
 	@Override

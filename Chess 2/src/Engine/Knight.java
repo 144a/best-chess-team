@@ -4,6 +4,7 @@ public class Knight extends Piece {
 	// Super constructor
 	public Knight(Color icolor, Square ilocation, Player iplayer) {
 		super(icolor, ilocation, PieceType.KNIGHT, iplayer);
+		this.value = 3;
 	}
 	
 	@Override

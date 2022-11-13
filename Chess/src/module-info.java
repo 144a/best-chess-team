@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author meatloaf
- *
- */
-module Chess {
-}

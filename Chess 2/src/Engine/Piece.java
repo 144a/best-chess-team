@@ -7,6 +7,8 @@ public abstract class Piece {
 	protected boolean captured;
 	protected PieceType type;
 	protected Player player;
+	protected int value;
+	protected boolean hasMoved;
 
 	// Parent constructor
 	public Piece(Color icolor, Square ilocation, PieceType itype, Player iplayer) {
@@ -15,6 +17,7 @@ public abstract class Piece {
 		this.captured = false;
 		this.type = itype;
 		this.player = iplayer;
+		this.hasMoved = false;
 	}
 	
 	// Abstract Methods
@@ -23,7 +26,7 @@ public abstract class Piece {
 	public abstract String toString();
 	
 	// Methods
-	public PieceType getPeiceType() {
+	public PieceType getPieceType() {
 		return this.type;
 	}
 	
@@ -38,7 +41,9 @@ public abstract class Piece {
 	public void setCaptured() {
 		this.captured = true;
 	}
-	
+	public int getValue(){
+		return this.value;
+	}
 	public boolean move(Square loc) {
 		// Validate Move before changing anything
 		if(this.validate(loc) == false) {

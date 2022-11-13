@@ -6,6 +6,7 @@ public class King extends Piece {
 	// Super constructor
 	public King(Color icolor, Square ilocation, Player iplayer) {
 		super(icolor, ilocation, PieceType.KING, iplayer);
+		this.value = 0;
 	}
 
 	@Override

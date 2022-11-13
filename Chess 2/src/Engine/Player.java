@@ -65,11 +65,11 @@ public abstract class Player {
 	// Done to simplify abstraction path
 	public void takeTurn() {
 		// Takes a list object with both the piece and square object references
-		List<Object> currentMove = this.getMove();
+		Move currentMove = this.getMove();
 		
 		// Gives move function proper inputs by casting to correct object types
 		// Will re-ask for input if this.move == false
-		while(!this.move((Piece) currentMove.get(0), (Square) currentMove.get(1))) {
+		while(!this.move((Piece) currentMove.getPiece(), (Square) currentMove.getEnd())) {
 			System.out.println("This piece cannot make that move. Please try again:");
 			currentMove = this.getMove();
 		}
@@ -87,7 +87,13 @@ public abstract class Player {
 	public Color getColor() {
 		return this.color;
 	}
-	
+	public int getValue(){
+		int get = 0;
+		for (Piece each : this.pieces){
+			if (!each.captured) { get += each.getValue();}
+		}
+		return get;
+	}
 	// Returns a list of object to handle both Square and Piece object types
-	abstract List<Object> getMove();
+	abstract Move getMove();
 }

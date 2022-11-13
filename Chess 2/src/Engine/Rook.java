@@ -7,6 +7,7 @@ public class Rook extends Piece {
 	// Super constructor
 	public Rook(Color icolor, Square ilocation, Player iplayer) {
 		super(icolor, ilocation, PieceType.ROOK, iplayer);
+		this.value = 5;
 	}
 
 	@Override

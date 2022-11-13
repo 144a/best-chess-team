@@ -11,7 +11,7 @@ public class humanPlayer extends Player {
 	}
 
 	@Override
-	List<Object> getMove() {
+	Move getMove() {
 		// Create a scanner object for reading user input
 		Scanner playerinp = new Scanner(System.in);
 		
@@ -85,7 +85,7 @@ public class humanPlayer extends Player {
 		
 		
 	    // Read user input
-		return ret;
+		return new Move(pieceloc.getPiece(), targetloc);
 	}
 
 }

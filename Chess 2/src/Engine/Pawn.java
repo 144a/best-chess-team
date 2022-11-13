@@ -17,6 +17,7 @@ public class Pawn extends Piece {
 	public Pawn(Color icolor, Square ilocation, Player iplayer) {
 		super(icolor, ilocation, PieceType.PAWN, iplayer);
 		isFirstMove = true;
+		this.value = 1;
 	}
 	
 
