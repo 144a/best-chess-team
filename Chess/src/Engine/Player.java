@@ -80,6 +80,10 @@ public abstract class Player {
 		this.board = b; 
 	}
 	
+	public void setWon(boolean bool) {
+		this.won = bool; 
+	}
+	
 	public ArrayList<Piece> getPieces() {
 		return this.pieces; 
 	}

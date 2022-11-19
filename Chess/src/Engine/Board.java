@@ -1,5 +1,7 @@
 package Engine;
 
+import java.util.ArrayList;
+
 public class Board {
 	// Fields
 	private Square[][] squares;
@@ -31,15 +33,120 @@ public class Board {
 	
 	// Methods
 	public boolean checkIfCheck(Color c) {
-		boolean ret = false;
-		
-		return ret;
+		ArrayList<Piece> p2Pieces = player2.getPieces();
+		ArrayList<Piece> p1Pieces = player1.getPieces();
+		if(c.equals(Color.WHITE)) {
+			Piece king = p1Pieces.get(4);
+			for(Piece p : p2Pieces) {
+				if(p.validate(king.getLocation())) {
+					return true;
+				}
+			}
+		}
+		if(c.equals(Color.BLACK)) {
+			Piece king = p2Pieces.get(4);
+			for(Piece p : p1Pieces) {
+				if(p.validate(king.getLocation())) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	public boolean checkIfCheckmate(Color c) {
-		boolean ret = false;
+		ArrayList<Piece> otherPieces = new ArrayList<>();
+		ArrayList<Piece> thisPieces = new ArrayList<>();
+		if(c.equals(Color.WHITE)) {
+			otherPieces = player2.getPieces();
+			 thisPieces = player1.getPieces();
+		}
+		else {
+			 thisPieces = player2.getPieces();
+			 otherPieces = player1.getPieces();
+		}
+			Piece king = thisPieces.get(4);
+			Square loc = king.getLocation();
+			ArrayList<Square> potentialMoves = new ArrayList<>();
+			//1. row, col-1
+			if(loc.getLocation()[1] - 1 >= 0) {
+				Square temp = this.getSquare(loc.getLocation()[0], loc.getLocation()[1] - 1);
+				if(king.validate(temp)) {
+					potentialMoves.add(temp);
+				}
+			}
+			//2. row, col + 1
+			if(loc.getLocation()[1] + 1 < 8) {
+				Square temp = this.getSquare(loc.getLocation()[0], loc.getLocation()[1] + 1);
+				if(king.validate(temp)) {
+					potentialMoves.add(temp);
+				}
+			
+			}
+			//3. row - 1, col
+			if(loc.getLocation()[0] - 1 >= 0) {
+				Square temp = this.getSquare(loc.getLocation()[0] - 1, loc.getLocation()[1]);
+				if(king.validate(temp)) {
+					potentialMoves.add(temp);
+				}
+			
+			}
+			//4. row + 1, col
+			if(loc.getLocation()[0] + 1 < 8) {
+				Square temp = this.getSquare(loc.getLocation()[0] + 1, loc.getLocation()[1]);
+				if(king.validate(temp)) {
+					potentialMoves.add(temp);
+				}
+			
+			}
+			//5. row -1, col -1
+			if(loc.getLocation()[0] - 1 >= 0 && loc.getLocation()[1] - 1 >= 0) {
+				Square temp = this.getSquare(loc.getLocation()[0] - 1, loc.getLocation()[1] - 1);
+				if(king.validate(temp)) {
+					potentialMoves.add(temp);
+				}
+			
+			}
+			//6. row -1, col + 1
+			if(loc.getLocation()[0] - 1 >= 0 && loc.getLocation()[1] + 1 < 8) {
+				Square temp = this.getSquare(loc.getLocation()[0] - 1, loc.getLocation()[1] + 1);
+				if(king.validate(temp)) {
+					potentialMoves.add(temp);
+				}
+			
+			}
+			//7. row + 1, col - 1
+			if(loc.getLocation()[0] + 1 < 8 && loc.getLocation()[1] -1 >= 0) {
+				Square temp = this.getSquare(loc.getLocation()[0] + 1, loc.getLocation()[1] - 1);
+				if(king.validate(temp)) {
+					potentialMoves.add(temp);
+				}
+			
+			}
+			//8. row + 1, col + 1
+			if(loc.getLocation()[0] + 1 < 8 && loc.getLocation()[1] + 1 < 8) {
+				Square temp = this.getSquare(loc.getLocation()[0] + 1, loc.getLocation()[1] + 1);
+				if(king.validate(temp)) {
+					potentialMoves.add(temp);
+				}
+			
+			}
+			//check if potential moves are in check
+			int count = 0;
+			for(Square s : potentialMoves) {
+				for(Piece p : otherPieces ) {
+					if(p.validate(s)) {
+						count++;
+						break;
+					}
+				}
+			}
+			if (count >= potentialMoves.size()) {
+				return true;
+			}
+			
 		
-		return ret;
+		return false;
 	}
 	
 	public Square getSquare(int ir, int ic) {
