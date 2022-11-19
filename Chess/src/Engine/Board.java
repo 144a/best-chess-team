@@ -72,14 +72,24 @@ public class Board {
 			if(loc.getLocation()[1] - 1 >= 0) {
 				Square temp = this.getSquare(loc.getLocation()[0], loc.getLocation()[1] - 1);
 				if(king.validate(temp)) {
+					if(temp.getPiece() == null) {
 					potentialMoves.add(temp);
+					}
+					else if (!temp.getPiece().getColor().equals(c)) {
+						potentialMoves.add(temp);
+					}
 				}
 			}
 			//2. row, col + 1
 			if(loc.getLocation()[1] + 1 < 8) {
 				Square temp = this.getSquare(loc.getLocation()[0], loc.getLocation()[1] + 1);
 				if(king.validate(temp)) {
+					if(temp.getPiece() == null) {
 					potentialMoves.add(temp);
+					}
+					else if (!temp.getPiece().getColor().equals(c)) {
+						potentialMoves.add(temp);
+					}
 				}
 			
 			}
@@ -87,7 +97,12 @@ public class Board {
 			if(loc.getLocation()[0] - 1 >= 0) {
 				Square temp = this.getSquare(loc.getLocation()[0] - 1, loc.getLocation()[1]);
 				if(king.validate(temp)) {
+					if(temp.getPiece() == null) {
 					potentialMoves.add(temp);
+					}
+					else if (!temp.getPiece().getColor().equals(c)) {
+						potentialMoves.add(temp);
+					}
 				}
 			
 			}
@@ -95,7 +110,12 @@ public class Board {
 			if(loc.getLocation()[0] + 1 < 8) {
 				Square temp = this.getSquare(loc.getLocation()[0] + 1, loc.getLocation()[1]);
 				if(king.validate(temp)) {
+					if(temp.getPiece() == null) {
 					potentialMoves.add(temp);
+					}
+					else if (!temp.getPiece().getColor().equals(c)) {
+						potentialMoves.add(temp);
+					}
 				}
 			
 			}
@@ -103,7 +123,12 @@ public class Board {
 			if(loc.getLocation()[0] - 1 >= 0 && loc.getLocation()[1] - 1 >= 0) {
 				Square temp = this.getSquare(loc.getLocation()[0] - 1, loc.getLocation()[1] - 1);
 				if(king.validate(temp)) {
+					if(temp.getPiece() == null) {
 					potentialMoves.add(temp);
+					}
+					else if (!temp.getPiece().getColor().equals(c)) {
+						potentialMoves.add(temp);
+					}
 				}
 			
 			}
@@ -111,7 +136,12 @@ public class Board {
 			if(loc.getLocation()[0] - 1 >= 0 && loc.getLocation()[1] + 1 < 8) {
 				Square temp = this.getSquare(loc.getLocation()[0] - 1, loc.getLocation()[1] + 1);
 				if(king.validate(temp)) {
+					if(temp.getPiece() == null) {
 					potentialMoves.add(temp);
+					}
+					else if (!temp.getPiece().getColor().equals(c)) {
+						potentialMoves.add(temp);
+					}
 				}
 			
 			}
@@ -119,7 +149,12 @@ public class Board {
 			if(loc.getLocation()[0] + 1 < 8 && loc.getLocation()[1] -1 >= 0) {
 				Square temp = this.getSquare(loc.getLocation()[0] + 1, loc.getLocation()[1] - 1);
 				if(king.validate(temp)) {
+					if(temp.getPiece() == null) {
 					potentialMoves.add(temp);
+					}
+					else if (!temp.getPiece().getColor().equals(c)) {
+						potentialMoves.add(temp);
+					}
 				}
 			
 			}
@@ -127,7 +162,12 @@ public class Board {
 			if(loc.getLocation()[0] + 1 < 8 && loc.getLocation()[1] + 1 < 8) {
 				Square temp = this.getSquare(loc.getLocation()[0] + 1, loc.getLocation()[1] + 1);
 				if(king.validate(temp)) {
+					if(temp.getPiece() == null) {
 					potentialMoves.add(temp);
+					}
+					else if (!temp.getPiece().getColor().equals(c)) {
+						potentialMoves.add(temp);
+					}
 				}
 			
 			}
