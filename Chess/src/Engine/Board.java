@@ -54,7 +54,7 @@ public class Board {
 		return false;
 	}
 	
-	public boolean checkIfCheckmate(Color c) {
+	 public boolean checkIfCheckmateKing(Color c) {
 		ArrayList<Piece> otherPieces = new ArrayList<>();
 		ArrayList<Piece> thisPieces = new ArrayList<>();
 		if(c.equals(Color.WHITE)) {
@@ -185,10 +185,73 @@ public class Board {
 				return true;
 			}
 			
+			
+			
 		
 		return false;
 	}
 	
+	public boolean checkIfCheckmate(Color c) {
+		
+		ArrayList<Piece> otherPieces = new ArrayList<>();
+		ArrayList<Piece> thisPieces = new ArrayList<>();
+		boolean check = true;
+		if(c.equals(Color.WHITE)) {
+			otherPieces = player2.getPieces();
+			 thisPieces = player1.getPieces();
+		}
+		else {
+			 thisPieces = player2.getPieces();
+			 otherPieces = player1.getPieces();
+		}
+		for(Piece p : thisPieces) {
+			for(int i = 0; i < 8; i++) {
+				if(p.getType() != PieceType.KING) {
+					for(Square s : this.squares[i]) {
+						if(p.validate(s)) {
+							if(s.getPiece() == null) {
+								Square curr = p.getLocation();
+								curr.setPiece(null);
+								s.setPiece(p);
+								p.setLocation(s);
+								check = checkIfCheck(c);
+								curr.setPiece(p);
+								s.setPiece(null);
+								p.setLocation(curr);
+								if(check == false) {
+									return check;
+								}
+							}
+							else if(s.getPiece().getColor() != c) {
+								Square curr = p.getLocation();
+								curr.setPiece(null);
+								Piece capture = s.getPiece();
+								s.setPiece(p);
+								p.setLocation(s);
+								capture.setLocation(null);
+								check = checkIfCheck(c);
+								curr.setPiece(p);
+								s.setPiece(capture);
+								capture.setLocation(s);
+								p.setLocation(curr);
+								if(check == false) {
+									return check;
+									}
+							}
+						}
+					}
+				}
+				else {
+					check = checkIfCheckmateKing(c);
+					if(check == false) {
+						return check;
+					}
+				}
+			}
+		}
+		return true;
+		
+	}
 	public Square getSquare(int ir, int ic) {
 		return this.squares[ir][ic];
 	}

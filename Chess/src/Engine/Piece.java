@@ -71,7 +71,7 @@ public abstract class Piece {
 		return ret;
 	}
 	
-	protected boolean pathClear(Square loc1, Square loc2) {
+	public boolean pathClear(Square loc1, Square loc2) {
 		int[] cur = loc1.getLocation();
 		int[] target = loc2.getLocation();
 		

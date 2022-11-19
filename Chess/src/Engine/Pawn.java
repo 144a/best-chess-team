@@ -77,5 +77,8 @@ public class Pawn extends Piece {
 			return "bP";
 		}
 	}
+	public boolean isFirstMove() {
+		return this.isFirstMove;
+	}
 }
 
