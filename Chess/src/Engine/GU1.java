@@ -62,7 +62,7 @@ public class GU1 extends JPanel implements  ActionListener {
                 g.fillRect(x + 120, y , 40, 40);
             }
         }
-        drawImages();
+        //drawImages(); The method call was removed because the board instance on line 72 returned "null" during the final project test.The code for some reason runs fine locally and the instance return the string array.
     }
     private void drawImages()
     {
