@@ -1,30 +1,74 @@
+
+
 package Engine;
 
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.*;
 import java.util.List;
 import java.util.Scanner;
 
-public class humanPlayer extends Player {
 
-	public humanPlayer(Color icolor) {
+public class humanPlayer extends Player  {
+
+	String[] xy ;Square Temppieceloc = null; Square Temptargetloc = null;
+
+	public humanPlayer(Color icolor)
+    {
 		super(icolor);
 	}
+	String x;
+	Scanner playerinp = new Scanner(System.in);
+	//Panel_manager pm = new Panel_manager();
+	public  Piece  smo(String C)
+	{
 
+		Temppieceloc = this.board.getSquare(C);
+
+		return Temppieceloc.getPiece();
+	}
+
+	public  Square smo2(String C)
+	{
+		return Temptargetloc = this.board.getSquare(C);
+	}
+	//String enter = playerinp.nextLine();
 	@Override
 	List<Object> getMove() {
 		// Create a scanner object for reading user input
-		Scanner playerinp = new Scanner(System.in);
-		
+
 		Square pieceloc = null;
+
 		Square targetloc = null;
 		boolean isPiece = false;
 		boolean isTarget = false;
-		while(!isPiece) {
+
+
+
+
+
+		while(!isPiece)
+		{
+			System.out.println("new " + Arrays.toString(xy));
+
 			System.out.println("Choose Piece to move: ");
-			String userin = playerinp.nextLine();
-			
+			GU2 g2 = new GU2();
+
+
+
+			String userin = playerinp.nextLine();;
+			//String userin = enter;
+
 			// Check for an input of greater than length 2
-			if(userin.length() > 2) {
+			if (userin == null)
+			{
+				System.out.println("Input was greater than 2 characters.");
+			}
+			if(userin.length() > 2)
+			{
 				System.out.println("Input was greater than 2 characters.");
 			}
 			
@@ -32,7 +76,10 @@ public class humanPlayer extends Player {
 			// Check for an input with no letter
 			
 			try {
-				pieceloc = this.board.getSquare(userin);
+				if (userin != null) {
+					pieceloc = this.board.getSquare(userin);
+
+				}
 				isPiece = true;
 				
 			} catch(Exception e) {
@@ -40,14 +87,18 @@ public class humanPlayer extends Player {
 			}
 			
 			// Check to see if color is matching
-			if(pieceloc.getPiece() == null) {
+			if(pieceloc.getPiece() == null)
+			{
 				isPiece = false;
 				System.out.println("Input requires a square with a piece on it.");
-			} else {
+			}
+			else {
 				if(pieceloc.getPiece().getColor() != this.color) {
 					isPiece = false;
 					System.out.println("Input is of a opponent's piece.");
-				} else {
+				}
+				else
+				{
 					isPiece = true;
 				}
 			}
@@ -55,8 +106,9 @@ public class humanPlayer extends Player {
 		
 		while(!isTarget) {
 			System.out.println("Choose location to place piece: ");
+
 			String userin = playerinp.nextLine();
-			
+
 			// Check for an input of greater than length 2
 			if(userin.length() > 2) {
 				System.out.println(userin);
@@ -77,9 +129,22 @@ public class humanPlayer extends Player {
 				System.out.println("Input was greater than 2 characters.");
 			}
 		}
-		
+
 		// Build list of objects
+		//Panel_manager pm = new Panel_manager();
+		//pm.xy;
+	//	System.out.println("frpm hm "+ Arrays.toString(pm.xy));
 		List<Object> ret = new ArrayList<Object>();
+		//if (pm.xy[0] == null && pm.xy[1]==null)
+		{
+		//	System.out.println("PLEASE SELECT NEW BOX");
+		}
+		//else
+		{
+			//ret.add((pm.xy[0]));
+		}
+
+
 		ret.add(pieceloc.getPiece());
 		ret.add(targetloc);
 		
