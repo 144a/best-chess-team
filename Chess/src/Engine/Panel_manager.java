@@ -45,12 +45,12 @@ public class Panel_manager  implements ActionListener , MouseListener
         //panel1.add(gu);
         GU1 gu1 = new GU1();
         GU2 gu2 = new GU2();
-        mouse m = new mouse();
+        //mouse m = new mouse();
         panel1.add(gu1);
         //panel2.add(gu2);
         //panel2.add(gu2.textArea);
         //panel2.add(gu2.b);
-        panel1.add(m);
+        //panel1.add(m);
         panel1.addMouseListener(this);
 
         //b.addActionListener(this);
